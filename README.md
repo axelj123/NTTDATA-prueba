@@ -66,32 +66,6 @@ public class Users {
 }
 ```
 
-## Estructura del Proyecto
-
-```
-proyecto-ntt-data/
-├── backend/              # Aplicación Spring Boot
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   └── resources/
-│   │   └── test/
-│   └── pom.xml
-│
-└── frontend/             # Aplicación React/Vite
-    ├── public/
-    ├── src/
-    │   ├── assets/
-    │   ├── components/
-    │   ├── pages/
-    │   ├── services/
-    │   ├── App.jsx
-    │   └── main.jsx
-    ├── index.html
-    ├── package.json
-    └── vite.config.js
-```
-
 ## Instalación y Configuración
 
 ### Backend (Spring Boot)
@@ -167,7 +141,7 @@ FRONTEND_URL=http://localhost:5173
 > 1. Ve a Run > Edit Configurations
 > 2. En la configuración de Spring Boot, añade las siguientes variables de entorno:
 >    - server_port=8082
->    - db_url=jdbc:mysql://localhost:3306/nombre_db
+>    - db_url=jdbc:mysql://localhost:3306/nombre_db?useSSL=false&serverTimezone=UTC
 >    - db_user=tu_usuario_db
 >    - db_password=tu_contraseña_db
 >    - jwt_secret=nI2wlItdlyQuq5bOxfsiBoqoEsmRmjieXlkaaEBK2Phr8EAB7gqtbJZMGVZGipKbVSXEtwaADmSBkwoALGfAgaZHYVkDMDMjvx5MJenuuwLHDenfj8Zsgo8HLcCeeNUUvz84D1mS02zoA09kfJwgw258kntWsIhCtotzSpDe3NRPEGeA78Tie8UKj4AkYR6SevqCdGsiq8PbSEUitkZWhD1JlYtshUlnfdlETW0RkDGAebhwiqDY0pkb6F3C7MwI
@@ -189,7 +163,7 @@ Crear un archivo `.env` en la carpeta raíz del frontend con las siguientes vari
 
 ```
 VITE_API_HOST=localhost
-VITE_API_PORT=8082
+VITE_API_PORT=8080
 VITE_BASE_URL=http://${VITE_API_HOST}:${VITE_API_PORT}/api
 ```
 
@@ -200,23 +174,11 @@ Estas variables se utilizan para configurar la URL base para las llamadas a la A
 ### Documentación de la API
 La documentación completa de la API está disponible a través de Swagger UI:
 ```
-http://localhost:8082/swagger-ui/index.html
+http://localhost:8080/swagger-ui/index.html
 ```
 
 Puedes explorar todos los endpoints, ver los modelos de datos y probar las operaciones directamente desde la interfaz de Swagger.
 
-### Principales Endpoints
-
-#### Autenticación
-- `POST /api/auth/login` - Iniciar sesión
-- `POST /api/auth/register` - Registrar nuevo usuario
-
-#### Recursos
-- `GET /api/recursos` - Obtener todos los recursos
-- `GET /api/recursos/{id}` - Obtener un recurso específico
-- `POST /api/recursos` - Crear un nuevo recurso
-- `PUT /api/recursos/{id}` - Actualizar un recurso existente
-- `DELETE /api/recursos/{id}` - Eliminar un recurso
 
 ## Compilación para Producción
 
@@ -233,34 +195,38 @@ cd frontend
 npm run build
 ```
 Los archivos optimizados estarán disponibles en `dist/`.
-
 ## Pruebas
 
 ### Backend
+Las pruebas unitarias pueden ejecutarse de varias formas:
+
+#### Mediante Maven
 ```bash
 cd backend
 mvn test
 ```
 
-### Frontend
-```bash
-cd frontend
-npm test
-```
+#### Desde IntelliJ IDEA
+También puedes ejecutar las pruebas directamente desde IntelliJ IDEA:
+1. Navega hasta la carpeta `src/test/java`
+2. Haz clic derecho en la carpeta de pruebas
+3. Selecciona "Run Tests in..." o "Debug Tests in..."
+4. Alternativamente, puedes abrir una clase de prueba específica y ejecutarla individualmente con el icono de "play" junto al nombre de la clase o método
+
+Las pruebas cubren servicios principales de la aplicación.
+
 
 ## Características Implementadas
 - Autenticación y autorización con JWT
-- CRUD completo para entidades principales
+- CRUD completo para entidad Empleado
 - Validación de datos en backend
 - Gestión de estados en el frontend
 - Interfaces responsivas
 - Manejo de errores
 
 ## Contacto
-[TU NOMBRE] - [TU EMAIL]
+Axel Jhosmell Muñoz Silva - axeljhosmell13@gmail.com
 
 ---
-
-Este proyecto fue desarrollado como parte de una prueba técnica para NTT DATA.
 
 Este proyecto fue desarrollado como parte de una prueba técnica para NTT DATA.
