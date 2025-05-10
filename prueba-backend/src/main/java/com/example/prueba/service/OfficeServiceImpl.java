@@ -49,6 +49,10 @@ public class OfficeServiceImpl implements OfficeService {
 
     }
 
+    public Office findByName(String name) {
+        return officeRepository.findByName(name).orElse(null);
+    }
+
     @Override
     public void deleteOffice(Long id) {
         Optional<Office> officeOpt = officeRepository.findById(id);
