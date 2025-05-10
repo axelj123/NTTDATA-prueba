@@ -58,7 +58,7 @@ class OfficeServiceImplTest {
 
     @Test
     void deleteOffice() {
-        Office office = new Office(1L, "Oficina A", "Ubicación A", new HashSet<>()); // Inicializando un Set vacío
+        Office office = new Office(1L, "Oficina A", "Ubicación A", new HashSet<>());
 
         when(officeRepository.findById(1L)).thenReturn(Optional.of(office));
         doNothing().when(officeRepository).deleteById(1L);

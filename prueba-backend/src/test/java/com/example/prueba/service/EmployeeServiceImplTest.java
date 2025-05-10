@@ -40,7 +40,7 @@ class EmployeeServiceImplTest {
         request.setPhone("123456");
         request.setNationalId("987654321");
         request.setAddress("Calle 123");
-        request.setBirthDate(LocalDate.now()); // Cambiado a LocalDate
+        request.setBirthDate(LocalDate.now());
         request.setOffices(new HashSet<>(List.of(1L, 2L)));
 
         Office office1 = new Office(1L, "Oficina A", "Ubicación A", new HashSet<>());
@@ -54,7 +54,7 @@ class EmployeeServiceImplTest {
                 .phone(request.getPhone())
                 .nationalId(request.getNationalId())
                 .address(request.getAddress())
-                .birthDate(request.getBirthDate()) // Ahora es LocalDate
+                .birthDate(request.getBirthDate())
                 .offices(offices)
                 .build();
 
@@ -70,12 +70,20 @@ class EmployeeServiceImplTest {
     @Test
     void updateEmployee() {
         Employee existingEmployee = new Employee(1L, "Jane Doe", "654321", "123456789", "Avenida 456", LocalDate.of(1990, 5, 10), new HashSet<>());
+        EmployeeDTO.EmployeeRequest updatedEmployeeRequest = new EmployeeDTO.EmployeeRequest();
+        updatedEmployeeRequest.setName("Jane Smith");
+        updatedEmployeeRequest.setPhone("789456");
+        updatedEmployeeRequest.setNationalId("111222333");
+        updatedEmployeeRequest.setAddress("Avenida 789");
+        updatedEmployeeRequest.setBirthDate(LocalDate.of(1995, 7, 15));
+        updatedEmployeeRequest.setOffices(new HashSet<>());
+
         Employee updatedEmployee = new Employee(1L, "Jane Smith", "789456", "111222333", "Avenida 789", LocalDate.of(1995, 7, 15), new HashSet<>());
 
         when(employeeRepository.findById(1L)).thenReturn(Optional.of(existingEmployee));
         when(employeeRepository.save(any(Employee.class))).thenReturn(updatedEmployee);
 
-        Employee result = employeeService.updateEmployee(1L, updatedEmployee);
+        Employee result = employeeService.updateEmployee(1L, updatedEmployeeRequest);
 
         assertNotNull(result);
         assertEquals("Jane Smith", result.getName());
