@@ -85,7 +85,7 @@ public class Users {
    mvn spring-boot:run
    ```
 
-El servidor backend se iniciará en `http://localhost:8082`.
+El servidor backend se iniciará en `http://localhost:8080`.
 
 ### Frontend (React/Vite)
 
