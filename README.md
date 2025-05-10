@@ -140,7 +140,7 @@ FRONTEND_URL=http://localhost:5173
 > **Importante:** Es necesario configurar estas variables de entorno en IntelliJ IDEA mediante la edición de configuración de ejecución:
 > 1. Ve a Run > Edit Configurations
 > 2. En la configuración de Spring Boot, añade las siguientes variables de entorno:
->    - server_port=8082
+>    - server_port=8080
 >    - db_url=jdbc:mysql://localhost:3306/nombre_db?useSSL=false&serverTimezone=UTC
 >    - db_user=tu_usuario_db
 >    - db_password=tu_contraseña_db
